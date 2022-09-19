@@ -5,8 +5,8 @@ const router = express.Router()
 // Models
 
 // Routes
-router.get('/', (req, res) => {
-  res.send('Hello from bookings!')
+router.post('/', (req, res) => {
+  res.send('Post from bookings!')
 })
 
 // Export
