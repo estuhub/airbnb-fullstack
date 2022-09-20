@@ -21,14 +21,32 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/signup', async (req, res) => {
-  let user = await Users.create(req.body)
-  req.login(user, err => {
-    if (err) {
-      throw err
+router.post('/signup', async (req, res, next) => {
+  // try to catch all errors
+  try {
+    // declare the newUser credentials before storing them in the DB
+    let findUser = await Users.findOne({
+      email: req.body.email
+    })
+    // check if the newUser credentials are in the DB
+    if (req.body.email == findUser.email) {
+      // send an error message
+      throw new Error('User with this email already exists')
+    } else {
+      // create a new user in the db
+      let user = await Users.create(req.body)
+      // keep the session logged in
+      req.login(user, err => {
+        if (err) {
+          throw err
+        }
+      })
+      // redirect to /houses
+      res.redirect('/houses')
     }
-  })
-  res.redirect('/houses')
+  } catch (err) {
+    next(err)
+  }
 })
 
 //	LOGOUT
