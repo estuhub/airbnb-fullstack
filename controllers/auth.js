@@ -28,7 +28,7 @@ router.post('/signup', async (req, res) => {
       throw err
     }
   })
-  res.send('Signup from auth!')
+  res.redirect('/houses')
 })
 
 //	LOGOUT
