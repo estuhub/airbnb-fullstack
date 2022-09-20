@@ -6,7 +6,7 @@ const router = express.Router()
 
 // Routes
 router.get('/', (req, res) => {
-  res.send('Hello from index!')
+  res.redirect('/houses')
 })
 
 // Export

@@ -1,0 +1,168 @@
+<!-- header for pages when logged in -->
+<nav class="container p-2">
+	<!-- col1: img logo + col2: link1 and link2 -->
+	<div class="row">
+		<!-- col1: img logo with link -->
+		<div class="col">
+			<a href="#"
+				><img class="logo" src="images/logo-airbnb.png" alt="airbnb-logo"
+			/></a>
+		</div>
+		<!-- col2: link1 and link2 -->
+		<div class="col text-end">
+			<!-- link1: profile -->
+			<a class="btn btn-outline-secondary">
+				<img
+					class="me-2"
+					src="https://randomuser.me/api/portraits/men/11.jpg"
+					alt="profile-picture"
+				/>Ester Lin
+			</a>
+			<!-- link2: logout -->
+			<a class="btn btn-outline-secondary">Logout</a>
+		</div>
+	</div>
+</nav>
+<!-- col1: Profile & col2: Listing -->
+<div class="container">
+	<div class="row">
+		<!-- Profile -->
+		<div class="col-5">
+			<div class="row">
+				<!-- Profile title -->
+				<div class="col-10">
+					<p class="h2">Profile</p>
+				</div>
+				<!-- Profile inputs form -->
+				<div class="col-10 border-top border-grey">
+					<form>
+						<!-- Profile form input -->
+						<!-- Name -->
+						<div class="my-3">
+							<label class="form-label mb-0">Name</label>
+							<input
+								type="text"
+								class="form-control"
+								placeholder="Ester Lin"
+							/>
+						</div>
+						<!-- Email -->
+						<div class="mb-3">
+							<label class="form-label mb-0">Email</label>
+							<input
+								type="email"
+								class="form-control"
+								placeholder="ester@tortugacoders.com"
+							/>
+						</div>
+						<!-- Profile Pic -->
+						<div class="mb-3">
+							<label class="form-label">Profile Picture</label>
+							<div class="host">
+								<img
+									src="https://randomuser.me/api/portraits/men/11.jpg"
+									alt="profile-picture"
+									class="mb-3"
+								/>
+							</div>
+							<input
+								type="email"
+								class="form-control"
+								placeholder="https://randomuser.me/api/portal"
+							/>
+						</div>
+						<button class="btn btn-success">Save Changes</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Listing -->
+		<div class="col-7">
+			<div class="row">
+				<!-- Listing title -->
+				<div class="col-12 border-bottom border-grey mb-3">
+					<p class="h2">My Listings</p>
+				</div>
+				<!-- Listing button -->
+				<div class="col-12 mb-3">
+					<a href="#" class="btn btn-success">List a House</a>
+				</div>
+				<!-- option 1 -->
+				<!-- Listing cards -->
+				<div class="col-12">
+					<!-- Card 1 -->
+					<div class="card mb-3">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img
+									src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+									class="img-fluid rounded-start"
+									alt="..."
+								/>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title mb-0">Luxury Villa in Chaweng</h5>
+									<p class="card-text mb-1">
+										<small class="text-muted">4 rooms • $350/night</small>
+									</p>
+									<p class="card-text">
+										This is a wider card with supporting text below as a
+										natural lead-in to additional content. This content is a
+										little bit longer.
+									</p>
+									<button class="btn btn-outline-secondary">Edit</button>
+									<button class="btn btn-outline-success">View</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Card 2 -->
+					<div class="card mb-3">
+						<div class="row g-0">
+							<div class="col-md-4">
+								<img
+									src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+									class="img-fluid rounded-start"
+									alt="..."
+								/>
+							</div>
+							<div class="col-md-8">
+								<div class="card-body">
+									<h5 class="card-title">Card title</h5>
+									<p class="card-text">
+										<small class="text-muted"
+											>Last updated 3 mins ago</small
+										>
+									</p>
+									<p class="card-text">
+										This is a wider card with supporting text below as a
+										natural lead-in to additional content. This content is a
+										little bit longer.
+									</p>
+									<a href="#" class="btn btn-outline-secondary">Edit</a>
+									<a href="#" class="btn btn-outline-success">View</a>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- option 2 -->
+					<!-- no listings msg -->
+					<!-- <div class="card mb-3">
+						<div class="row g-0">
+							<div class="col-md-8">
+								<div class="card-body">
+									<p class="card-text">
+										You don't have any houses listed.
+									</p>
+								</div>
+							</div>
+						</div>
+					</div> -->
+					<!-- end of option 2 -->
+				</div>
+				<!-- end of option 1 -->
+			</div>
+		</div>
+	</div>
+</div>

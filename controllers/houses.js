@@ -6,7 +6,7 @@ const router = express.Router()
 
 // Routes
 router.get('/', (req, res) => {
-  res.send('Hello from houses!')
+  res.render('houses/list')
 })
 
 router.post('/', (req, res) => {
@@ -16,15 +16,15 @@ router.post('/', (req, res) => {
 // Nested controllers routes
 //	NESTED GET
 router.get('/create', (req, res) => {
-  res.send('Create from houses!')
+  res.render('houses/create')
 })
 
 router.get('/:id', (req, res) => {
-  res.send(':id from houses!')
+  res.render('houses/one')
 })
 
 router.get('/:id/edit', (req, res) => {
-  res.send(':id/edit from houses!')
+  res.render('houses/edit')
 })
 
 //	NESTED PATCH

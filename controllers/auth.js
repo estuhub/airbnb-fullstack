@@ -5,14 +5,10 @@ const router = express.Router()
 // Models
 
 // Routes
-router.get('/', (req, res) => {
-  res.send('Hello from auth!')
-})
-
 // Nested controllers routes
 //	LOGIN
 router.get('/login', (req, res) => {
-  res.send('Login from auth!')
+  res.render('login')
 })
 
 router.post('/login', (req, res) => {
@@ -21,7 +17,7 @@ router.post('/login', (req, res) => {
 
 //	SIGNUP
 router.get('/signup', (req, res) => {
-  res.send('Signup from auth!')
+  res.render('signup')
 })
 
 router.post('/signup', (req, res) => {
@@ -30,7 +26,7 @@ router.post('/signup', (req, res) => {
 
 //	LOGOUT
 router.get('/logout', (req, res) => {
-  res.send('Logout from auth!')
+  res.render('login')
 })
 
 // Export

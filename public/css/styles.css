@@ -1,0 +1,32 @@
+/* GENERAL */
+/* profile picture */
+a.btn > img {
+  border-radius: 100%;
+  width: 20px;
+}
+
+.logo {
+  width: 100px;
+}
+
+/* house info */
+.house img {
+  height: 100%;
+  width: 100%;
+}
+
+.host > img {
+  border-radius: 100%;
+  width: 35px;
+}
+
+/* login */
+.login-body,
+.signup-body {
+  background-image: url(https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399115/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/thailand.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+}
