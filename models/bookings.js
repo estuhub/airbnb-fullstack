@@ -2,21 +2,23 @@
 const mongoose = require('mongoose')
 
 // Create the model
-let Users = mongoose.model('Users', {
-  avatar: String,
-  email: {
+let Bookings = mongoose.model('Bookings', {
+  author: {
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now
+  },
+  description: {
     type: String,
     required: true
   },
-  name: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
+  house: {
     required: true
   }
 })
 
 // Export model
-module.exports = Users
+module.exports = Bookings
