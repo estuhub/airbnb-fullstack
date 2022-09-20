@@ -1,6 +1,7 @@
 // Packages
 const express = require('express')
 const router = express.Router()
+const Users = require('../models/users')
 
 // Models
 
@@ -20,7 +21,8 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 
-router.post('/signup', (req, res) => {
+router.post('/signup', async (req, res) => {
+  let user = await Users.create(req.body)
   res.send('Signup from auth!')
 })
 
