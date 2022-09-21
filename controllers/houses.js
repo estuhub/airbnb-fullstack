@@ -1,6 +1,7 @@
 // Packages
 const express = require('express')
 const router = express.Router()
+const Houses = require('../models/houses')
 
 // Models
 
@@ -9,9 +10,19 @@ router.get('/', (req, res) => {
   res.render('houses/list', { user: req.user })
 })
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.render('/')
+    // try to catch all errors
+    try {
+      // add the host _id to the house object
+      req.body.host = req.user._id
+      // declare the newHouse and create it to store it in the DB
+      let house = await Houses.create(req.body)
+      // use the newHouse _id to add it to the browser as template literals
+      res.redirect(`/houses/${house._id}`)
+    } catch (err) {
+      next(err)
+    }
   } else {
     res.redirect('/auth/login')
   }

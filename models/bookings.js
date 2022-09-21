@@ -1,9 +1,12 @@
 // Require moongose
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 // Create the model
 let Bookings = mongoose.model('Bookings', {
   author: {
+    type: ObjectId,
+    ref: 'users',
     required: true
   },
   date: {
@@ -16,6 +19,8 @@ let Bookings = mongoose.model('Bookings', {
     required: true
   },
   house: {
+    type: ObjectId,
+    ref: 'houses',
     required: true
   }
 })

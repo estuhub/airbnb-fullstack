@@ -1,5 +1,6 @@
 // Require moongose
 const mongoose = require('mongoose')
+const ObjectId = mongoose.Schema.Types.ObjectId
 
 // Create the model
 let Houses = mongoose.model('Houses', {
@@ -8,6 +9,8 @@ let Houses = mongoose.model('Houses', {
     required: true
   },
   host: {
+    type: ObjectId,
+    ref: 'users',
     required: true
   },
   location: {
