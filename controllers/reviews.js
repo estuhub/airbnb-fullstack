@@ -6,7 +6,11 @@ const router = express.Router()
 
 // Routes
 router.post('/', (req, res) => {
-  res.send('Hello from reviews!')
+  if (req.isAuthenticated()) {
+    res.render('houses/one')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 // Export

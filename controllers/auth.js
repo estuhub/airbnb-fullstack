@@ -29,10 +29,11 @@ router.post('/login', async (req, res, next) => {
       req.login(user, err => {
         if (err) {
           throw err
+        } else {
+          // redirect to /houses
+          res.redirect('/houses')
         }
       })
-      // redirect to /houses
-      res.redirect('/houses')
     }
   } catch (err) {
     next(err)
@@ -63,10 +64,11 @@ router.post('/signup', async (req, res, next) => {
       req.login(user, err => {
         if (err) {
           throw err
+        } else {
+          // redirect to /houses
+          res.redirect('/houses')
         }
       })
-      // redirect to /houses
-      res.redirect('/houses')
     }
   } catch (err) {
     next(err)
@@ -81,6 +83,12 @@ router.get('/logout', (req, res, next) => {
     }
     res.redirect('/auth/login')
   })
+  // req.session.destroy(err => {
+  //   if (err) {
+  //     next(err)
+  //   }
+  //   res.clearCookie('connect.sid')
+  // })
 })
 
 // Export

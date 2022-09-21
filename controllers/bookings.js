@@ -6,7 +6,11 @@ const router = express.Router()
 
 // Routes
 router.post('/', (req, res) => {
-  res.send('Post from bookings!')
+  if (req.isAuthenticated()) {
+    res.send('Post from bookings!')
+  } else {
+    res.redirect('auth/login')
+  }
 })
 
 // Export

@@ -6,11 +6,19 @@ const router = express.Router()
 
 // Routes
 router.get('/', (req, res) => {
-  res.render('profile')
+  if (req.isAuthenticated()) {
+    res.render('profile')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 router.patch('/', (req, res) => {
-  res.send('Hello from profile!')
+  if (req.isAuthenticated()) {
+    res.render('profile')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 // Export

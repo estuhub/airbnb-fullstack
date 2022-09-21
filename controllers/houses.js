@@ -10,13 +10,21 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  res.send('Hello from houses!')
+  if (req.isAuthenticated()) {
+    res.render('/')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 // Nested controllers routes
 //	NESTED GET
 router.get('/create', (req, res) => {
-  res.render('houses/create')
+  if (req.isAuthenticated()) {
+    res.render('houses/create')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 router.get('/:id', (req, res) => {
@@ -24,17 +32,29 @@ router.get('/:id', (req, res) => {
 })
 
 router.get('/:id/edit', (req, res) => {
-  res.render('houses/edit')
+  if (req.isAuthenticated()) {
+    res.render('houses/edit')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 //	NESTED PATCH
 router.patch('/:id', (req, res) => {
-  res.send(':id from houses!')
+  if (req.isAuthenticated()) {
+    res.render('houses/one')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 //	NESTED DELETE
 router.delete('/:id', (req, res) => {
-  res.send(':id from houses!')
+  if (req.isAuthenticated()) {
+    res.render('houses/list')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 
 // Export
