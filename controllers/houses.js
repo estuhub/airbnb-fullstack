@@ -6,8 +6,9 @@ const Houses = require('../models/houses')
 // Models
 
 // Routes
-router.get('/', (req, res) => {
-  res.render('houses/list', { user: req.user })
+router.get('/', async (req, res) => {
+  let houses = await Houses.find({})
+  res.render('houses/list', { user: req.user, houses })
 })
 
 router.post('/', async (req, res, next) => {
