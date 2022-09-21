@@ -38,8 +38,12 @@ router.get('/create', (req, res) => {
   }
 })
 
-router.get('/:id', (req, res) => {
-  res.render('houses/one', { user: req.user })
+router.get('/:id', async (req, res) => {
+  // find the document in the houses collection by .findById(req.params.id)
+  // because the whole object has the host ID already (added when created the house), you can populate by .populate('host')
+  let house = await Houses.findById(req.params.id).populate('host')
+  // the second parameters inside the render { user: req.user, house } are the information we are sending to the HTML/HBS views
+  res.render('houses/one', { user: req.user, house })
 })
 
 router.get('/:id/edit', (req, res) => {

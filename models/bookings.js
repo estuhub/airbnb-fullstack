@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const ObjectId = mongoose.Schema.Types.ObjectId
 
 // Create the model
-let Bookings = mongoose.model('Bookings', {
+let Bookings = mongoose.model('bookings', {
   author: {
     type: ObjectId,
     ref: 'users',

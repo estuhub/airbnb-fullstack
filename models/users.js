@@ -2,7 +2,7 @@
 const mongoose = require('mongoose')
 
 // Create the model
-let Users = mongoose.model('Users', {
+let Users = mongoose.model('users', {
   avatar: String,
   email: {
     type: String,
