@@ -77,18 +77,26 @@ router.post('/signup', async (req, res, next) => {
 
 //	LOGOUT
 router.get('/logout', (req, res, next) => {
-  req.logout(function(err) {
-    if (err) {
-      return next(err)
-    }
-    res.redirect('/auth/login')
-  })
-  // req.session.destroy(err => {
-  //   if (err) {
-  //     next(err)
-  //   }
-  //   res.clearCookie('connect.sid')
-  // })
+  // try to catch all errors
+  try {
+    // add logout method from passport
+    req.logout(err => {
+      if (err) {
+        throw err
+      }
+      // deletes the session in the DB
+      req.session.destroy(err => {
+        if (err) {
+          throw err
+        }
+        res.clearCookie('connect.sid')
+        // redirects to log in page
+        res.redirect('/auth/login')
+      })
+    })
+  } catch (err) {
+    next(err)
+  }
 })
 
 // Export
