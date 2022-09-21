@@ -6,7 +6,7 @@ const router = express.Router()
 
 // Routes
 router.get('/', (req, res) => {
-  res.render('houses/list')
+  res.render('houses/list', { user: req.user })
 })
 
 router.post('/', (req, res) => {
@@ -21,19 +21,19 @@ router.post('/', (req, res) => {
 //	NESTED GET
 router.get('/create', (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('houses/create')
+    res.render('houses/create', { user: req.user })
   } else {
     res.redirect('/auth/login')
   }
 })
 
 router.get('/:id', (req, res) => {
-  res.render('houses/one')
+  res.render('houses/one', { user: req.user })
 })
 
 router.get('/:id/edit', (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('houses/edit')
+    res.render('houses/edit', { user: req.user })
   } else {
     res.redirect('/auth/login')
   }

@@ -6,7 +6,7 @@ const router = express.Router()
 
 // Routes
 router.get('/', (req, res) => {
-  res.redirect('/houses')
+  res.redirect('/houses', { user: req.user })
 })
 
 // Export

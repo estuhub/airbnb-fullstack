@@ -9,17 +9,23 @@
 			/></a>
 		</div>
 		<!-- col2: link1 and link2 -->
+		{{#if user}}
 		<div class="col text-end">
 			<!-- link1: profile -->
 			<a class="btn btn-outline-secondary">
 				<img
 					class="me-2"
-					src="https://randomuser.me/api/portraits/men/11.jpg"
+					src="{{user.avatar}}"
 					alt="profile-picture"
-				/>Ester Lin
+				/>{{user.name}}
 			</a>
 			<!-- link2: logout -->
-			<a class="btn btn-outline-secondary">Logout</a>
+			<a href="/auth/logout" class="btn btn-outline-secondary">Logout</a>
 		</div>
+		{{else}}
+		<div class="col text-end">
+		<a href="/auth/login" class="btn btn-outline-secondary">Login</a>
+		</div>
+		{{/if}}
 	</div>
 </nav>

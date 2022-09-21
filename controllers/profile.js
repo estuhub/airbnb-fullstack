@@ -7,7 +7,7 @@ const router = express.Router()
 // Routes
 router.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('profile')
+    res.render('profile', { user: req.user })
   } else {
     res.redirect('/auth/login')
   }
