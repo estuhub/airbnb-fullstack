@@ -167,12 +167,13 @@
 						<i class="fa-solid fa-thumbs-up text-success"></i>
 						2 Reviews</small
 					>
-					<form>
+					<form action="/bookings" method="POST">
+						<input type="text" name="house" value="{{ house.id }}" hidden>
 						<textarea
 							class="form-control my-3"
 							rows="7"
 							placeholder="Send the host a message..."
-							name="review"
+							name="description"
 						></textarea>
 						<button class="btn btn-success">Request Booking</button>
 					</form>
