@@ -1,9 +1,9 @@
 // Packages
 const express = require('express')
 const router = express.Router()
-const Users = require('../models/users')
 
 // Models
+const Users = require('../models/users')
 
 // Routes
 // Nested controllers routes

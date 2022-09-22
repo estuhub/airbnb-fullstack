@@ -1,9 +1,9 @@
 // Packages
 const express = require('express')
 const router = express.Router()
-const Houses = require('../models/houses')
 
 // Models
+const Houses = require('../models/houses')
 
 // Routes
 router.get('/', async (req, res) => {
