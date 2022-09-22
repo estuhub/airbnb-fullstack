@@ -7,7 +7,29 @@ const Houses = require('../models/houses')
 
 // Routes
 router.get('/', async (req, res) => {
-  let houses = await Houses.find({})
+  // start with an empty object
+  let query = {}
+  // check if there's a location in the query, if there is, then add it to the empty object
+  if (req.query.location) {
+    query.location = req.query.location
+  }
+  // check if there's a rooms in the query, if there is, then add it to the empty object
+  if (req.query.rooms) {
+    query.rooms = req.query.rooms
+  }
+  // check if there's a price in the query, if there is, then add it to the empty object, because we are asking for the max, we use $lte
+  if (req.query.price) {
+    query.price = { $lte: req.query.price }
+  }
+  // check if there's a search in the query, if there is, then add it to the empty object, for a fuzzy search we add the $regex and $options for case sensitivity
+  if (req.query.search) {
+    query.search = {
+      $regex: 'req.query.search',
+      $options: 'i'
+    }
+  }
+  // .find function works with an empty object to find all the documents available, if we pass the conditions to the query, it'll look only the documents with the condition
+  let houses = await Houses.find(query).sort('price')
   res.render('houses/list', { user: req.user, houses })
 })
 

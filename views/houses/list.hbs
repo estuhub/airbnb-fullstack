@@ -3,15 +3,15 @@
 <div class="bg-light">
 	<div class="container p-2">
 		<!-- form: location, rooms, price, order, house name, button3 -->
-		<form>
+		<form action="/houses" method="GET">
 			<div class="row justify-content-center align-items-center">
 				<!-- location filter -->
 				<div class="col input-group">
 					<span class="input-group-text">
 						<i class="fa-solid fa-location-dot"></i>
 					</span>
-					<select class="form-control" name="location">
-						<option>Any Location</option>
+					<select name="location" class="form-control" name="location">
+						<option value="">Any Location</option>
 						<option>Koh Phangan</option>
 						<option>Koh Samui</option>
 						<option>Bali</option>
@@ -22,8 +22,8 @@
 					<span class="input-group-text">
 						<i class="fa-solid fa-house-chimney"></i>
 					</span>
-					<select class="form-control" name="rooms">
-						<option>Any Rooms</option>
+					<select name="rooms" class="form-control" name="rooms">
+						<option value="">Any Rooms</option>
 						<option value="1">1 room</option>
 						<option value="2">2 rooms</option>
 						<option value="3">3 rooms</option>
@@ -37,6 +37,7 @@
 						<i class="fa-solid fa-dollar-sign"></i>
 					</span>
 					<input
+						name="price"
 						type="number"
 						class="form-control"
 						placeholder="Max. Price"
@@ -48,15 +49,16 @@
 					<span class="input-group-text">
 						<i class="fa-solid fa-sort"></i>
 					</span>
-					<select class="form-control">
-						<option>Price (low to high)</option>
-						<option>Price (high to low)</option>
+					<select name="order" class="form-control">
+						<option value="1">Price (low to high)</option>
+						<option value="-1">Price (high to low)</option>
 					</select>
 				</div>
 				<!-- search filter -->
 				<div class="col">
 					<div class="col input-group">
 						<input
+							name="search"
 							type="text"
 							class="form-control"
 							placeholder="House name..."
@@ -92,7 +94,7 @@
 						{{ house.location }} • {{ house.rooms }} Rooms
 					</small>
 					<!-- Title -->
-					<h5 class="card-title">{{ houses.title }}</h5>
+					<h5 class="card-title">{{ house.title }}</h5>
 					<!-- Reviews & Price -->
 					<div class="row">
 						<!-- Reviews -->
