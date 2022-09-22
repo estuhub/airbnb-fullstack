@@ -30,6 +30,7 @@ router.get('/', async (req, res) => {
   }
   // .find function works with an empty object to find all the documents available, if we pass the conditions to the query, it'll look only the documents with the condition
   let houses = await Houses.find(query).sort('price')
+  // missing sort by price in descending way
   res.render('houses/list', { user: req.user, houses })
 })
 
@@ -69,18 +70,23 @@ router.get('/:id', async (req, res) => {
   res.render('houses/one', { user: req.user, house })
 })
 
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('houses/edit', { user: req.user })
+    let house = await Houses.findById(req.params.id)
+    res.render('houses/edit', { user: req.user, house })
   } else {
     res.redirect('/auth/login')
   }
 })
 
 //	NESTED PATCH
-router.patch('/:id', (req, res) => {
+router.patch('/:id', async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('houses/one')
+    // findByIdAndUpdate using the logged in user, passing the information from the form and refreshing with the new data
+    let house = await Houses.findByIdAndUpdate(req.params.id, req.body, {
+      new: true
+    })
+    res.redirect(`/houses/${req.params.id}`)
   } else {
     res.redirect('/auth/login')
   }

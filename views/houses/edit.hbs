@@ -2,29 +2,30 @@
 <section class="container">
 	<!-- title -->
 	<div>
-		<p class="h2">List a House</p>
+		<p class="h2">Edit a House</p>
 	</div>
 	<!-- form -->
-	<form>
+	<form action="/houses/{{ house._id }}?_method=PATCH" method="POST">
 		<!-- short title -->
 		<div class="mb-3">
 			<label class="form-label m-0">Short Title</label>
-			<input type="text" class="form-control name="title"" />
+			<input type="text" class="form-control" name="title" value="{{ house.title }}" />
 		</div>
 		<!-- description -->
 		<div class="mb-3">
 			<label class="form-label m-0">Description</label>
-			<textarea class="form-control" rows="7" name="description"></textarea>
+			<textarea class="form-control" rows="7" name="description"
+			>{{ house.description }}</textarea>
 		</div>
 		<!-- number of rooms -->
 		<div class="mb-3">
 			<label class="form-label m-0">Number of Rooms</label>
-			<input type="number" class="form-control" name="rooms" />
+			<input type="number" class="form-control" name="rooms" value="{{ house.rooms }}" />
 		</div>
 		<!-- location -->
 		<div class="mb-3">
 			<label class="form-label m-0">Location</label>
-			<select class="form-control" name="location">
+			<select class="form-control" name="location" value="{{ house.location }}">
 				<option>Koh Phangan</option>
 				<option>Koh Samui</option>
 				<option>Bali</option>
@@ -36,92 +37,23 @@
 			<span class="input-group-text">
 				<i class="fa-solid fa-dollar-sign"></i>
 			</span>
-			<input type="number" class="form-control" name="price" />
+			<input type="number" class="form-control" name="price" value="{{ house.price }}" />
 		</div>
 		<!-- photos -->
 		<div class="mb-3">
 			<label class="form-label m-0">Photos (up to 9)</label>
 			<!-- photo 1 -->
+			{{#each house.photos as |photo|}}
 			<div class="mb-1">
 				<input
 					type="url"
 					class="form-control"
 					placeholder="https://..."
 					name="photo"
+					value="{{ photo }}"
 				/>
 			</div>
-			<!-- photo 2 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
-			<!-- photo 3 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
-			<!-- photo 4 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
-			<!-- photo 5 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
-			<!-- photo 6 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
-			<!-- photo 7 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
-			<!-- photo 8 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
-			<!-- photo 9 -->
-			<div class="mb-1">
-				<input
-					type="url"
-					class="form-control"
-					placeholder="https://..."
-					name="photo"
-				/>
-			</div>
+			{{/each}}
 		</div>
 		<!-- button -->
 		<div>
