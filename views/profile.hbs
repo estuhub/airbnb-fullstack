@@ -64,40 +64,40 @@
 				</div>
 				<!-- Listing button -->
 				<div class="col-12 mb-3">
-					<a href="#" class="btn btn-success">List a House</a>
+					<a href="/houses/create" class="btn btn-success">List a House</a>
 				</div>
 				<!-- option 1 -->
 				<!-- Listing cards -->
 				<div class="col-12">
 					<!-- Card 1 -->
+					{{#each houses as |house|}}
 					<div class="card mb-3">
 						<div class="row g-0">
 							<div class="col-md-4">
 								<img
-									src="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+									src="{{ house.photos.[0] }}"
 									class="img-fluid rounded-start"
 									alt="..."
 								/>
 							</div>
 							<div class="col-md-8">
 								<div class="card-body">
-									<h5 class="card-title mb-0">Luxury Villa in Chaweng</h5>
+									<h5 class="card-title mb-0">{{ house.title }}</h5>
 									<p class="card-text mb-1">
-										<small class="text-muted">4 rooms • $350/night</small>
+										<small class="text-muted">{{ house.rooms }} rooms • ${{ house.price }}/night</small>
 									</p>
 									<p class="card-text">
-										This is a wider card with supporting text below as a
-										natural lead-in to additional content. This content is a
-										little bit longer.
+										{{ house.description }}
 									</p>
-									<button class="btn btn-outline-secondary">Edit</button>
-									<button class="btn btn-outline-success">View</button>
+									<a href="/houses/{{ house._id }}/edit" class="btn btn-outline-secondary">Edit</a>
+									<a href="/houses/{{ house._id }}" class="btn btn-outline-success">View</a>
 								</div>
 							</div>
 						</div>
 					</div>
+					{{/each}}
 					<!-- Card 2 -->
-					<div class="card mb-3">
+					<!-- <div class="card mb-3">
 						<div class="row g-0">
 							<div class="col-md-4">
 								<img
@@ -124,7 +124,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 					<!-- option 2 -->
 					<!-- no listings msg -->
 					<!-- <div class="card mb-3">

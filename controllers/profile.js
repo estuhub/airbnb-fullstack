@@ -4,11 +4,15 @@ const router = express.Router()
 
 // Models
 const Users = require('../models/users')
+const Houses = require('../models/houses')
 
 // Routes
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('profile', { user: req.user })
+    let houses = await Houses.find({
+      host: req.user._id
+    })
+    res.render('profile', { user: req.user, houses })
   } else {
     res.redirect('/auth/login')
   }
