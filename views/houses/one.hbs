@@ -5,7 +5,7 @@
 		<!-- col1: big pic -->
 		<div class="col">
 			<img
-				src="{{house.photos.[0]}}"
+				src="{{house.photos.[0]}} " id="big"
 			/>
 		</div>
 		<!-- col1: row-cols-3 means 3 columns for each row -->
@@ -14,7 +14,8 @@
 				<!-- pictures loop -->
 				{{#each house.photos as |photo|}}
 					<div class="col">
-						<img src="{{ photo }}"	/>
+						<!-- onclick makes the function works when someone clicks on it, when you put (this) inside the function, it returns the element that you clicked on -->
+						<img src="{{ photo }}" onclick="makeBig(this)"	/>
 					</div>
 				{{/each}}
 			</div>
