@@ -59,9 +59,12 @@
 					<!-- title -->
 					<p class="fs-3 mb-0">2 Reviews</p>
 					<p class="fs-6 mb-0">Leave a review</p>
-					<form>
+					<form action="/reviews" method="POST">
+						<!-- house id -->
+						<input type="text" name="house" value="{{ house.id }}" hidden>
 						<!-- text area -->
 						<textarea
+							name="description"
 							class="form-control"
 							rows="4"
 							name="review"
@@ -69,13 +72,11 @@
 						<!-- review icons and button -->
 						<div class="my-2">
 							<!-- thumbs up -->
-							<div class="btn btn-outline-success">
 								<i class="fa-solid fa-thumbs-up text-success"></i>
-							</div>
+								<input type="radio" name="rating" value="1" class="btn btn-outline-success">
 							<!-- thumbs down -->
-							<div class="btn btn-outline-danger">
 								<i class="fa-solid fa-thumbs-down text-danger"></i>
-							</div>
+								<input type="radio" name="rating" value="-1" class="btn btn-outline-danger">
 						</div>
 						<button class="btn btn-success">Submit</button>
 					</form>
@@ -164,7 +165,7 @@
 		<div class="col-4">
 			<div class="card shadow p-3 mb-5 bg-body rounded">
 				<div class="card-body">
-					<h5 class="card-title">$350/night</h5>
+					<h5 class="card-title">${{ house.price }}/night</h5>
 					<small>
 						<i class="fa-solid fa-thumbs-up text-success mb-3"></i>
 						2 Reviews</small
@@ -185,7 +186,7 @@
 		<div class="col-4">
 			<div class="card shadow p-3 mb-5 bg-body rounded">
 				<div class="card-body">
-					<h5 class="card-title">$350/night</h5>
+					<h5 class="card-title">${{ house.price }}/night</h5>
 					<small>
 						<i class="fa-solid fa-thumbs-up text-success"></i>
 						2 Reviews</small

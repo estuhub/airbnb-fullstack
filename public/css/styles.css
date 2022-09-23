@@ -30,3 +30,7 @@ a.btn > img {
   height: 100vh;
   margin: 0;
 }
+
+input[type='radio'] {
+  -webkit-appearance: none;
+}
