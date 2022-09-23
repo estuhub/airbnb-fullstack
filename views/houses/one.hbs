@@ -157,6 +157,29 @@
 				</div>
 			</div>
 		</div>
+		<!-- if statement, if booking is true, it'll give the option 2, if it's false, it'll give option 1 -->
+		{{#if booking}}
+		<!-- option 2 -->
+		<!-- col2: booking requested -->
+		<div class="col-4">
+			<div class="card shadow p-3 mb-5 bg-body rounded">
+				<div class="card-body">
+					<h5 class="card-title">$350/night</h5>
+					<small>
+						<i class="fa-solid fa-thumbs-up text-success mb-3"></i>
+						2 Reviews</small
+					>
+					<div class="card bg-success bg-opacity-25">
+						<div class="card-body">
+							<p class="m-0">Thank you for your enquiry.</p>
+							<small>Sent on {{ booking.date }}</small>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end of option 2 -->
+		{{else}}
 		<!-- option 1 -->
 		<!-- col2: request booking -->
 		<div class="col-4">
@@ -180,25 +203,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- option 2 -->
-		<!-- col2: booking requested -->
-		<!-- <div class="col-4">
-			<div class="card shadow p-3 mb-5 bg-body rounded">
-				<div class="card-body">
-					<h5 class="card-title">$350/night</h5>
-					<small>
-						<i class="fa-solid fa-thumbs-up text-success mb-3"></i>
-						2 Reviews</small
-					>
-					<div class="card bg-success bg-opacity-25">
-						<div class="card-body">
-							<p class="m-0">Thank you for your enquiry.</p>
-							<small>Sent on 02 Jan 2022 - 01:01</small>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- end of option 2 -->
+		{{/if}}
 	</div>
 </div>

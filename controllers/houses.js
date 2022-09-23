@@ -4,6 +4,7 @@ const router = express.Router()
 
 // Models
 const Houses = require('../models/houses')
+const Bookings = require('../models/bookings')
 
 // Routes
 router.get('/', async (req, res, next) => {
@@ -71,8 +72,14 @@ router.get('/:id', async (req, res, next) => {
     // find the document in the houses collection by .findById(req.params.id)
     // because the whole object has the host ID already (added when created the house), you can populate by .populate('host')
     let house = await Houses.findById(req.params.id).populate('host')
-    // the second parameters inside the render { user: req.user, house } are the information we are sending to the HTML/HBS views
-    res.render('houses/one', { user: req.user, house })
+    // check if the logged in user has a booking in the current page of the house
+    let booking = await Bookings.findOne({
+      author: req.user._id,
+      house: req.params.id
+    })
+    // let booking = await Booking.findById(req.body.author)
+    // the second parameters inside the render { user: req.user, house, booking } are the information we are sending to the HTML/HBS views
+    res.render('houses/one', { user: req.user, house, booking })
   } catch (err) {
     next(err)
   }
