@@ -81,8 +81,9 @@
 						<button class="btn btn-success">Submit</button>
 					</form>
 				</div>
-				<!-- comments area -->
-				<!-- comment 1 -->
+				<!-- reviews area -->
+				<!-- reviews 1 -->
+				{{#each reviews as |review|}}
 				<div class="col-10 pb-4">
 					<div class="card">
 						<div class="card-body">
@@ -91,7 +92,7 @@
 								<div class="col-1 host">
 									<img
 										class="me-2"
-										src="https://randomuser.me/api/portraits/men/11.jpg"
+										src="{{ review.author.avatar }}"
 										alt="profile-picture"
 									/>
 								</div>
@@ -100,62 +101,27 @@
 									<!-- card: col1: date & col2: review icon -->
 									<div class="row">
 										<div class="col text-muted">
-											<small>02 Jan 2022 - 01:01</small>
+											<small>{{ review.date }}</small>
 										</div>
 										<div class="col text-end">
-											<i class="fa-solid fa-thumbs-up text-success"></i>
+											{{#if review.rating }}
+											<i class="fa-solid fa-thumbs-up text-success">{{ review.rating }}</i>
+											{{else}}
+											<i class="fa-solid fa-thumbs-down text-danger">{{ review.rating }}</i>
+											{{/if}}
 										</div>
 									</div>
 									<!-- card: name & info -->
-									<p>Peter Lewis</p>
+									<p>{{ review.author.name }}</p>
 									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur voluptas repellat maiores libero dolor
-										esse voluptatibus atque vitae a odit, itaque officiis,
-										facilis debitis iure distinctio harum eaque, ullam id?
+										{{ review.description }}
 									</p>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- comment 2 -->
-				<div class="col-10 pb-4">
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<!-- col1: pic -->
-								<div class="col-1 host">
-									<img
-										class="me-2"
-										src="https://randomuser.me/api/portraits/men/11.jpg"
-										alt="profile-picture"
-									/>
-								</div>
-								<!-- col2: card info -->
-								<div class="col-11">
-									<!-- card: col1: date & col2: review icon -->
-									<div class="row">
-										<div class="col text-muted">
-											<small>02 Jan 2022 - 01:01</small>
-										</div>
-										<div class="col text-end">
-											<i class="fa-solid fa-thumbs-up text-success"></i>
-										</div>
-									</div>
-									<!-- card: name & info -->
-									<p>Peter Lewis</p>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Pariatur voluptas repellat maiores libero dolor
-										esse voluptatibus atque vitae a odit, itaque officiis,
-										facilis debitis iure distinctio harum eaque, ullam id?
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				{{/each}}
 			</div>
 		</div>
 		<!-- if statement, if booking is true, it'll give the option 2, if it's false, it'll give option 1 -->

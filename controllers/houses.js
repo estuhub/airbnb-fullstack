@@ -5,6 +5,7 @@ const router = express.Router()
 // Models
 const Houses = require('../models/houses')
 const Bookings = require('../models/bookings')
+const Reviews = require('../models/reviews')
 
 // Routes
 router.get('/', async (req, res, next) => {
@@ -77,9 +78,12 @@ router.get('/:id', async (req, res, next) => {
       author: req.user._id,
       house: req.params.id
     })
-    // let booking = await Booking.findById(req.body.author)
+    // check if the house that is shown has reviews
+    let reviews = await Reviews.find({
+      house: req.params.id
+    }).populate('author')
     // the second parameters inside the render { user: req.user, house, booking } are the information we are sending to the HTML/HBS views
-    res.render('houses/one', { user: req.user, house, booking })
+    res.render('houses/one', { user: req.user, house, booking, reviews })
   } catch (err) {
     next(err)
   }
